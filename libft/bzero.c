@@ -6,17 +6,17 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:05:54 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 14:36:35 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/22 21:46:16 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-    unsigned char *temp;
+	unsigned char *temp;
 
-    temp = s;
-    while (n--)
-        *temp++ = 0;
+	temp = s;
+	while (n--)
+		*temp++ = 0;
 }

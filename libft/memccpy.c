@@ -6,27 +6,27 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 15:25:59 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 15:55:53 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/22 21:48:49 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-    char *temp;
-    const char *s;
+	char		*temp;
+	const char	*s;
 
-    temp = dst;
-    s = src;
-    while (n--)
-    {
-        if (*s == (const char)c)
-        {
-            *temp = *s;
-            return (dst);
-        }
-        *temp++ = *s++;
-    }
-    return (NULL);
+	temp = dst;
+	s = src;
+	while (n--)
+	{
+		if (*s == (const char)c)
+		{
+			*temp = *s;
+			return (dst);
+		}
+		*temp++ = *s++;
+	}
+	return (NULL);
 }

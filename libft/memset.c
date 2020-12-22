@@ -6,18 +6,18 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:05:54 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 21:10:24 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/22 21:44:48 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_memset(void *str, int c, size_t len)
+void	*ft_memset(void *str, int c, size_t len)
 {
-    unsigned char *temp;
+	unsigned char *temp;
 
-    temp = str;
-    while (len--)
-        *temp++ = c;
-    return (str);
+	temp = str;
+	while (len--)
+		*temp++ = c;
+	return (str);
 }

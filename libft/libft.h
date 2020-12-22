@@ -6,13 +6,13 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:56:56 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 12:58:42 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/22 14:12:36 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-typedef unsigned int  size_t;
+#include <stdlib.h>
 
 #endif

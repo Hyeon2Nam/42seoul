@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   memmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 11:05:54 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 21:10:24 by riiringim        ###   ########.fr       */
+/*   Created: 2020/12/22 20:49:46 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/22 21:29:19 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_memset(void *str, int c, size_t len)
+void    *ft_memmove(void *dst, const void *src, size_t len)
 {
-    unsigned char *temp;
+    char *temp;
+    const char *str;
 
-    temp = str;
-    while (len--)
-        *temp++ = c;
-    return (str);
+    if (dst <= src)
+    {
+        temp = dst;
+        str = src;
+        while (len--)
+            *temp++ = *str++;
+    }
+    else
+    {
+        temp = dst;
+        temp += len;
+        str = src;
+        src += len;
+        while (len--)
+            *--temp = *--str;
+    }
+    return (dst);
 }

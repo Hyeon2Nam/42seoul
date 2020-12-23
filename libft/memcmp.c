@@ -6,21 +6,21 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 23:02:35 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 23:11:57 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/23 20:10:32 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    const unsigned char *src1;
-    const unsigned char *src2;
+	const unsigned char *src1;
+	const unsigned char *src2;
 
-    src1 = s1;
-    src2 = s2;
-    while (n--)
-        if (*src1++ != *src2++)
-            return (src1 - src2);
-    return (0);
+	src1 = s1;
+	src2 = s2;
+	while (n--)
+		if (*src1++ != *src2++)
+			return (src1 - src2);
+	return (0);
 }

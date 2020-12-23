@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memmove.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 20:49:46 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 21:50:17 by riiringim        ###   ########.fr       */
+/*   Created: 2020/12/23 16:07:10 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/23 20:11:38 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char		*temp;
-	const char	*str;
+	size_t i;
+	size_t dlen;
 
-	if (dst <= src)
+	dlen = ft_strlen(dst);
+	i = 0;
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (src[i] && dlen + i < dstsize - 1)
 	{
-		temp = dst;
-		str = src;
-		while (len--)
-			*temp++ = *str++;
+		dst[i + dlen] = src[i];
+		i++;
 	}
-	else
-	{
-		temp = dst;
-		temp += len;
-		str = src;
-		src += len;
-		while (len--)
-			*--temp = *--str;
-	}
-	return (dst);
+	dst[i + dlen] = 0;
+	printf("%s", dst);
+	if (dstsize < dlen)
+		return (ft_strlen(src) + dstsize);
+	return (ft_strlen(src) + dlen);
 }

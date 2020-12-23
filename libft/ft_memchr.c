@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 16:07:10 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/23 20:11:38 by riiringim        ###   ########.fr       */
+/*   Created: 2020/12/22 21:51:19 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/23 20:10:10 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t i;
-	size_t dlen;
+	const char *temp;
 
-	dlen = ft_strlen(dst);
-	i = 0;
-	if (dstsize == 0)
-		return (ft_strlen(src));
-	while (src[i] && dlen + i < dstsize - 1)
-	{
-		dst[i + dlen] = src[i];
-		i++;
-	}
-	dst[i + dlen] = 0;
-	printf("%s", dst);
-	if (dstsize < dlen)
-		return (ft_strlen(src) + dstsize);
-	return (ft_strlen(src) + dlen);
+	temp = s;
+	while (n--)
+		if (*temp++ == c)
+			return ((void *)--temp);
+	return (NULL);
 }

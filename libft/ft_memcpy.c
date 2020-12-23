@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 11:05:54 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/22 21:46:16 by riiringim        ###   ########.fr       */
+/*   Created: 2020/12/22 14:37:51 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/22 21:47:46 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char *temp;
+	char		*temp;
+	const char	*s;
 
-	temp = s;
+	temp = dest;
+	s = src;
 	while (n--)
-		*temp++ = 0;
+		*temp++ = *s++;
+	return (dest);
 }

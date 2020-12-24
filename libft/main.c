@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:39:28 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/23 23:38:35 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/24 22:30:27 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int main(void)
 {
   char a[] = "asdfqwer";
-  // char b[] = "zxcvzxcv";
+  char b[] = "q";
 
   // printf("%s", ft_memset(a, 'c', sizeof(a)));
   // ft_bzero(a, sizeof(a));
@@ -29,5 +29,6 @@ int main(void)
   // printf("%zu", ft_strlen(a));
   // printf("%zu", ft_strlcpy(a,b,sizeof(b)));
   // printf("%zu", ft_strlcat(a, b, 15));
-  printf("%s", ft_strchr(a, 113));
+  // printf("%s", ft_strchr(a, 110));
+  printf("%s", ft_strnstr(a, b, 4));
 }

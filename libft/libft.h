@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:56:56 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/24 22:41:52 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/24 23:25:54 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *s1, const char *s2, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int 	ft_atoi(const char *str);
 
 #endif

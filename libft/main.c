@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:39:28 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/25 16:45:50 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/25 21:59:07 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int main(void)
 {
   char a[] = "asdfqwer";
-  // char b[] = "qwer";
+  char b[] = "zxcvzxcv";
 
   // printf("%s", ft_memset(a, 'c', sizeof(a)));
   // ft_bzero(a, sizeof(a));
@@ -35,5 +35,6 @@ int main(void)
   // printf("%d\n", ft_strncmp(a, b, 5));
   // printf("%d", ft_atoi(" -1234"));
   // printf("%s", ft_strdup(a));
-  printf("%s", ft_substr(a, 4, 9));
+  // printf("%s", ft_substr(a, 4, 9));
+  printf("%s\n", ft_strjoin(a, b));
 }

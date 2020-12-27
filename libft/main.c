@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:39:28 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/26 17:44:08 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/27 17:18:34 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 int main(void)
 {
-  char a[] = "aabaa";
-  char b[] = "aqrfes";
+  // char a[] = "aabaa";
+  // char b[] = "aqrfes";
 
   // printf("%s", ft_memset(a, 'c', sizeof(a)));
   // ft_bzero(a, sizeof(a));
@@ -37,5 +37,17 @@ int main(void)
   // printf("%s", ft_strdup(a));
   // printf("%s", ft_substr(a, 4, 9));
   // printf("%s\n", ft_strjoin(a, b));
-  printf("%s\n", ft_strtrim(a, b));
+  // printf("%s\n", ft_strtrim(a, b));
+
+  /*
+  char **tab;
+  unsigned int i;
+
+  i = 0;
+  tab = ft_split("dsdsdsdasd", 'd');
+  while (tab[i] != NULL)
+  {
+    printf("%s\n", tab[i]);
+    i++;
+  }*/
 }

@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:39:28 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/27 20:39:40 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 16:37:31 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int main(void)
     printf("%s\n", tab[i]);
     i++;
   }*/
-  printf("%s",ft_itoa(-2147483648));
+  // printf("%s",ft_itoa(-2147483648));
+  ft_putnbr_fd(-2147483648, 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rendendrendngendm <rendendrendngendm@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/26 15:21:22 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 22:35:47 by riiringim        ###   ########.fr       */
+/*   Created: 2020/12/26 15:21:22 by rendendrendngendm         #+#    #+#             */
+/*   Updated: 2020/12/28 23:03:16 by rendendrendngendm        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	start;
 	size_t	end;
 	char	*str;
 
 	if (!s1 || !set)
 		return (NULL);
-	start = 0;
-	end = ft_strlen(s1) - 1;
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	while (end >= start && ft_strchr(set, s1[end]))
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	end = ft_strlen(s1);
+	while (end && ft_strchr(set, s1[end]))
 		end--;
-	str = (char *)malloc(sizeof(char) * end + 1);
-	ft_strlcpy(str, s1 + start, end);
+	str = ft_substr((char*)s1, 0, end + 1);
 	return (str);
 }

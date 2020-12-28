@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 22:42:32 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 20:15:15 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 20:20:13 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	d1 = (unsigned char *)s1;
 	d2 = (unsigned char *)s2;
-	while (d1[i] && d2[i] && i < n)
+	while ((d1[i] || d2[i]) && i < n)
 	{
 		if (d1[i] != d2[i])
 			return (d1[i] - d2[i]);
 		i++;
 	}
-	if (d1[i] != d2[i] && i != n)
-		return (d1[i] - d2[i]);
 	return (0);
 }

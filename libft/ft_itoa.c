@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:17:53 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 19:48:34 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 22:51:50 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static size_t	ft_intlen(long n)
 	size_t i;
 
 	i = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 	{
 		n *= -1;
@@ -38,7 +40,7 @@ char			*ft_itoa(int n)
 
 	num = n;
 	len = ft_intlen(num);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	str[len--] = 0;
 	if (num == 0)

@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 19:12:28 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 19:49:10 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 21:15:46 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len;
 	size_t	i;
 
+	if (!s1 || !s2)
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	str = (char *)malloc(sizeof(char) * len);

@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:56:56 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 16:22:09 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 16:26:28 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
 
 #endif

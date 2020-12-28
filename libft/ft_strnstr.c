@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 21:38:36 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 19:49:26 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 20:49:50 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 	{
 		j = 0;
 		while (s1[i + j] == s2[j] && i + j < len)
+		{
 			j++;
-		if (j == ft_strlen(s2))
-			return ((char *)s1 + i);
+			if (s2[j] == 0)
+				return ((char *)s1 + i);
+		}
 		i++;
 	}
 	return (NULL);

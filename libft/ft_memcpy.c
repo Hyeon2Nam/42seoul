@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 14:37:51 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 17:39:37 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 18:35:14 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*temp;
 	const char	*s;
 
-	if (!dest && ! src)
-		return (0);
+	if (!dest && !src)
+		return (NULL);
 	temp = dest;
 	s = src;
 	while (n--)

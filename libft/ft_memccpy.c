@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 15:25:59 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/24 23:59:14 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/28 17:50:17 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
+	size_t		i;
 	char		*temp;
 	const char	*s;
 
 	temp = dst;
 	s = src;
-	while (n--)
+	i = 0;
+	while (i < n)
 	{
-		if (*s == (const char)c)
-		{
-			*temp = *s;
-			return (dst);
-		}
-		*temp++ = *s++;
+		temp[i] = s[i];
+		if (temp[i] == (char)c)
+			return (dst + i + 1);
+		++i;
 	}
 	return (NULL);
 }

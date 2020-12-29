@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:56:56 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/29 16:49:57 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 17:14:43 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ typedef struct	s_list
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
 
 #endif

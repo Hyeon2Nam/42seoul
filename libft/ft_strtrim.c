@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rendendrendngendm <rendendrendngendm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/26 15:21:22 by rendendrendngendm         #+#    #+#             */
-/*   Updated: 2020/12/28 23:03:16 by rendendrendngendm        ###   ########.fr       */
+/*   Created: 2020/12/29 20:39:38 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/29 20:39:45 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

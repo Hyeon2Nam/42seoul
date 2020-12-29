@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 16:07:10 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 19:49:13 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 20:46:39 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		i++;
 	}
 	dst[i + dlen] = 0;
-	printf("%s", dst);
 	if (dstsize < dlen)
 		return (ft_strlen(src) + dstsize);
 	return (ft_strlen(src) + dlen);

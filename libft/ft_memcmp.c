@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 23:02:35 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 19:48:43 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 20:45:39 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char *src1;
-	unsigned char *src2;
-	size_t i;
+	unsigned char	*src1;
+	unsigned char	*src2;
+	size_t			i;
 
 	i = 0;
 	src1 = (unsigned char *)s1;

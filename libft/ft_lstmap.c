@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 19:55:27 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/29 20:22:05 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 20:38:47 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f)
 		return (NULL);
-	content = ft_lstnew(f(lst->content));
-	if (!content)
+	if (!(content = ft_lstnew(f(lst->content))))
 	{
 		ft_lstclear(&lst, del);
 		return (NULL);

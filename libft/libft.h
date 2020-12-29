@@ -6,15 +6,14 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:56:56 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/29 19:55:41 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 20:37:56 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef		LIBFT_H
+# define	LIBFT_H
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <unistd.h>
 
 void	*ft_memset(void *b, int c, size_t len);
@@ -55,7 +54,7 @@ void	ft_putnbr_fd(int n, int fd);
 typedef struct	s_list
 {
 	void 			*content;
-	struct s_list 	*next;
+	struct s_list	*next;
 }				t_list;
 
 t_list	*ft_lstnew(void *content);

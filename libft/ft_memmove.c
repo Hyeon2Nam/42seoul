@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 20:49:46 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 18:30:25 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 20:45:55 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char *d;
-	char *s;
-	size_t i;
+	char	*d;
+	char	*s;
+	size_t	i;
 
 	if (dst == src || !len)
 		return (dst);

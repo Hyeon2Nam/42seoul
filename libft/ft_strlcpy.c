@@ -6,14 +6,14 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 14:18:31 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/28 20:42:43 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 20:36:14 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t i;
 

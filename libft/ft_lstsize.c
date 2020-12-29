@@ -6,13 +6,13 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:13:42 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/29 17:57:19 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 20:38:58 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	size_t i;
 

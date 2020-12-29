@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 18:03:57 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/29 18:16:33 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/29 19:45:01 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 	else
 	{	
-		last = ft_lstlast(lst);
+		last = ft_lstlast(*lst);
 		last->next = new;
 	}
 }

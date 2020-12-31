@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 17:59:16 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/29 20:34:17 by riiringim        ###   ########.fr       */
+/*   Updated: 2020/12/31 22:45:59 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ static int		ft_cstrlen(const char *s, char c, size_t i)
 	size_t len;
 
 	len = 0;
-	while (s[i++] != c && s[i++])
+	while (s[i] != c && s[i])
+	{
+		i++;
 		len++;
+	}
 	return (len);
 }
 
@@ -68,7 +71,7 @@ static char		**ft_action_split(const char *s, char c, char **str, size_t len)
 		while (s[i] == c)
 			i++;
 		str[cnt] = (char *)malloc(sizeof(char) * ft_cstrlen(s, c, i) + 1);
-		if (!str)
+		if (!str[cnt])
 			return (ft_free(str, cnt));
 		while (s[i] && s[i] != c)
 			str[cnt][j++] = s[i++];
@@ -84,10 +87,10 @@ char			**ft_split(char const *s, char c)
 	char	**str;
 	size_t	clen;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	clen = ft_cutnum(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * clen + 1)))
+	if (!(str = (char **)malloc(sizeof(char *) * (clen + 1))))
 		return (NULL);
 	return (ft_action_split(s, c, str, clen));
 }

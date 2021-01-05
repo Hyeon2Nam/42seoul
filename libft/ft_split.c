@@ -6,7 +6,7 @@
 /*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 17:59:16 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/31 22:45:59 by riiringim        ###   ########.fr       */
+/*   Updated: 2021/01/05 13:10:19 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,83 +14,48 @@
 
 static size_t	ft_cutnum(char const *s, char c)
 {
-	size_t i;
 	size_t cnt;
 
-	i = 0;
 	cnt = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] != c && s[i])
+		if (*s != c)
 		{
-			cnt++;
-			while (s[i] && s[i] != c)
-				i++;
+			++cnt;
+			while (*s && *s != c)
+				++s;
 		}
-		else if (s[i])
-			i++;
+		else
+			++s;
 	}
 	return (cnt);
 }
 
-static char		**ft_free(char **s, size_t cnt)
-{
-	size_t i;
-
-	i = 0;
-	while (i < cnt)
-		free(s[i++]);
-	free(s);
-	return (NULL);
-}
-
-static int		ft_cstrlen(const char *s, char c, size_t i)
-{
-	size_t len;
-
-	len = 0;
-	while (s[i] != c && s[i])
-	{
-		i++;
-		len++;
-	}
-	return (len);
-}
-
-static char		**ft_action_split(const char *s, char c, char **str, size_t len)
-{
-	size_t i;
-	size_t j;
-	size_t cnt;
-
-	i = 0;
-	cnt = 0;
-	while (s[i] && cnt < len)
-	{
-		j = 0;
-		while (s[i] == c)
-			i++;
-		str[cnt] = (char *)malloc(sizeof(char) * ft_cstrlen(s, c, i) + 1);
-		if (!str[cnt])
-			return (ft_free(str, cnt));
-		while (s[i] && s[i] != c)
-			str[cnt][j++] = s[i++];
-		str[cnt][j] = 0;
-		cnt++;
-	}
-	str[cnt] = 0;
-	return (str);
-}
-
 char			**ft_split(char const *s, char c)
 {
-	char	**str;
-	size_t	clen;
+	char	**ret;
+	char	*from;
+	size_t	index;
+	size_t	size;
 
-	if (!s)
-		return (NULL);
-	clen = ft_cutnum(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * (clen + 1))))
-		return (NULL);
-	return (ft_action_split(s, c, str, clen));
+	if (!(ret = (char**)malloc(sizeof(char*) * ft_cutnum(s, c) + 1)))
+		return (0);
+	index = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			from = (char*)s;
+			while (*s && *s != c)
+				++s;
+			size = s - from + 1;
+			if (!(ret[index] = (char*)malloc(size)))
+				return (0);
+			ft_strlcpy(ret[index++], from, size);
+		}
+		else
+			++s;
+	}
+	ret[index] = 0;
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 19:36:58 by hyenam            #+#    #+#             */
-/*   Updated: 2021/01/24 19:43:34 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/01/24 21:16:07 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 
 int				get_next_line(int fd, char **line);
 size_t			ft_strlen(const char *s);
-size_t			ft_strlcpy(char *dest, const char *src, size_t dstsize);
+size_t			ft_strlcat(char *dest, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dest, const char *src, size_t dstsize);
 char			*ft_strdup(const char *s1);
-char 			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoin(char *s1, char *s2);
 
 #endif

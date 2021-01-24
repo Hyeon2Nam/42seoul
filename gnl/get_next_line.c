@@ -6,7 +6,7 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:46:40 by hyenam            #+#    #+#             */
-/*   Updated: 2021/01/24 20:46:29 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/01/24 21:33:19 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,15 @@ static int	line_split(char **line, char **str, int break_point)
 
 static int	remaining_line(char **line, char **str, int rd_size)
 {
+	int break_point;
+
 	if (rd_size < 0)
 		return (-1);
+	else if (*str && (break_point = find_newline(*str)) >= 0)
+		return (line_split(line, str, break_point));
 	else if (*str)
 	{
 		*line = *str;
-		free(*str);
 		*str = NULL;
 		return (0);
 	}
@@ -61,14 +64,14 @@ static int	remaining_line(char **line, char **str, int rd_size)
 
 int			get_next_line(int fd, char **line)
 {
-	char buff[BUFFER_SIZE + 1];
-	static char *temp[OPEN_MAX];
-	size_t rd_size;
-	size_t break_point;
+	char		buff[BUFFER_SIZE + 1];
+	static char	*temp[OPEN_MAX];
+	int			rd_size;
+	int			break_point;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 0)
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	while (0 < (rd_size = read(fd, buff, BUFFER_SIZE)))
+	while ((rd_size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[rd_size] = '\0';
 		temp[fd] = ft_strjoin(temp[fd], buff);

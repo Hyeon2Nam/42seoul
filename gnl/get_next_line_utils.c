@@ -6,7 +6,7 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 20:12:12 by hyenam            #+#    #+#             */
-/*   Updated: 2021/01/24 21:59:41 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/01/24 22:10:33 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
@@ -24,8 +24,8 @@ size_t	ft_strlen(const char *s)
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	size_t src_len;
-	size_t i;
+	size_t	src_len;
+	size_t	i;
 
 	src_len = 0;
 	while (src[src_len] != '\0')
@@ -48,9 +48,9 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t dest_len;
-	size_t src_len;
+	size_t	i;
+	size_t	dest_len;
+	size_t	src_len;
 
 	dest_len = ft_strlen(dest);
 	src_len = ft_strlen(src);

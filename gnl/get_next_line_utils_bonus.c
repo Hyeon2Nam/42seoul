@@ -6,7 +6,7 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 20:46:18 by hyenam            #+#    #+#             */
-/*   Updated: 2021/01/24 21:20:56 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/01/24 22:01:18 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_strdup(const char *s1)
 {
-	char *str;
-	size_t len;
+	char	*str;
+	size_t	len;
 
 	len = ft_strlen(s1) + 1;
 	str = (char *)malloc(sizeof(char) * len);

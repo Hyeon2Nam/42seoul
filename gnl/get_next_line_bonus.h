@@ -6,12 +6,12 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 20:45:52 by hyenam            #+#    #+#             */
-/*   Updated: 2021/01/24 22:01:25 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/01/24 22:06:05 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <fcntl.h>
 # include <unistd.h>

@@ -6,11 +6,11 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 20:46:18 by hyenam            #+#    #+#             */
-/*   Updated: 2021/01/24 22:11:12 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/02/01 17:50:39 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -68,22 +68,21 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*newstr;
-	int		s1_len;
-	int		s2_len;
+	char	*str;
+	size_t	len;
 
-	if (!(s1) && !(s2))
+	if (!s1 && !s2)
 		return (NULL);
-	else if (!(s1) || !(s2))
-		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (!(newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	else if (!s1 || !s2)
+		return (!s1 ? ft_strdup(s2) : ft_strdup(s1));
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = (char *)malloc(sizeof(char) * len);
+	if (!str)
 		return (NULL);
-	ft_strlcpy(newstr, s1, s1_len + 1);
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	ft_strlcpy(str + ft_strlen(s1), s2, ft_strlen(s2) + 1);
 	free(s1);
-	ft_strlcat(newstr + (s1_len), s2, s2_len + 1);
-	return (newstr);
+	return (str);
 }
 
 char	*ft_strdup(const char *s1)

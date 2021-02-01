@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 17:59:16 by riiringim         #+#    #+#             */
-/*   Updated: 2021/01/05 13:59:45 by riiringim        ###   ########.fr       */
+/*   Updated: 2021/01/25 17:43:50 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static size_t	ft_cutnum(char const *s, char c)
+static size_t	ft_wordlen(char const *s, char c)
 {
-	size_t cnt;
+	size_t	cnt;
 
 	cnt = 0;
 	while (*s)
@@ -30,32 +29,39 @@ static size_t	ft_cutnum(char const *s, char c)
 	}
 	return (cnt);
 }
-
+static char		**ft_free_dptr(char **s, int i)
+{
+	while (--i >= 0 && s[i])
+	{
+		free(s[i]);
+		s[i] = NULL;
+	}
+	free(s);
+	s = NULL;
+	return (NULL);
+}
 char			**ft_split(char const *s, char c)
 {
-	char	**str;
-	char	*start;
-	size_t	i;
-	size_t	size;
+	int		i;
+	char	*from;
+	char	**buf;
 
-	if (!(str = (char**)malloc(sizeof(char*) * ft_cutnum(s, c) + 1)))
-		return (0);
 	i = 0;
+	if (!s || !(buf = (char **)malloc((ft_wordlen(s, c) + 1) * sizeof(char *))))
+		return (NULL);
 	while (*s)
 	{
 		if (*s != c)
 		{
-			start = (char*)s;
+			from = (char *)s;
 			while (*s && *s != c)
 				++s;
-			size = s - start + 1;
-			if (!(str[i] = (char*)malloc(size)))
-				return (0);
-			ft_strlcpy(str[i++], start, size);
+			if (!(buf[i++] = ft_substr(from, 0, (s - from))))
+				return (ft_free_dptr(buf, i));
 		}
 		else
 			++s;
 	}
-	str[i] = 0;
-	return (str);
+	buf[i] = NULL;
+	return (buf);
 }

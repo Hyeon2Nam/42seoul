@@ -6,7 +6,7 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 20:45:37 by hyenam            #+#    #+#             */
-/*   Updated: 2021/01/24 22:01:08 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/01/27 19:52:33 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,13 @@ static int	remaining_line(char **line, char **str, int rd_size)
 	return (0);
 }
 
-int			get_next_line(int fd, char **line)
+int			do_gnl(int fd, char **line)
 {
 	char		buff[BUFFER_SIZE + 1];
 	static char	*temp[OPEN_MAX];
 	int			rd_size;
 	int			break_point;
 
-	if (fd < 0 || !line || BUFFER_SIZE <= 0)
-		return (-1);
 	while ((rd_size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
 		buff[rd_size] = '\0';
@@ -80,4 +78,11 @@ int			get_next_line(int fd, char **line)
 			return (line_split(line, &temp[fd], break_point));
 	}
 	return (remaining_line(line, &temp[fd], rd_size));
+}
+
+int			get_next_line(int fd, char **line)
+{
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	return (do_gnl(fd, line));
 }

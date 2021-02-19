@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/18 20:34:24 by hyenam           ###   ########.fr       */
+/*   Created: 2021/02/18 17:41:42 by hyenam            #+#    #+#             */
+/*   Updated: 2021/02/18 17:43:21 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include "../libft/libft.h"
-#include <stdio.h>
-#include <stdarg.h>
+int ft_printf(const char *args, ...);
 
-typedef struct	t_option
+int main()
 {
-	char	flag;
-	int		width;
-	int		pre;
-	int		base;
-	char 	type;
-}				option;
-
-extern char *types = "diuxXcsp";
-extern int printf_cnt;
-
-#endif
+    pritnf("%d", 123);
+    ft_printf("%d", 123);
+}

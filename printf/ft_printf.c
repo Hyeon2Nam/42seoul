@@ -3,65 +3,110 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/20 11:46:29 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/02/20 13:44:36 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void set_option(va_list ap, char *args, int i)
+void print_str(char *arags)
 {
-	if (args[i] == '-')
-		option.dir = 'l';
-	if (args[i] == '0')
-		option.zero = 1;
-	if (args[i] == '.')
-		option.pre = args[i + 1];
-	if (args[i] >= '1' && args[i] <= '9')
-		option.width = va_arg(ap, int);
+	char *temp;
+
+	if (option.type == 'c')
+	{
+		printf_cnt++;
+		ft_putchar_fd(va_arg(ap, int), 1);
+	}
+	if (option.type == 's')
+	{
+		temp = va_arg(ap, char *);
+		printf_cnt += ft_strlen(temp);
+		ft_putstr_fd(temp, 1);
+	}
+	if (option.type == 'd' || option.type == 'i')
+		put_arg_int();
+	if (option.type == 'u')
+		put_arg_uint();
+	if (option.type == 'x')
+		put_arg_hex();
+	if (option.type == 'X')
+		put_arg_hex();
+	if (option.type == 'p')
+		put_arg_ptr();
 }
 
-void do_printf(va_list ap, char *args)
+int set_option(char *str, int i)
+{
+	if (str[i] == '-')
+		option.align = 'l';
+	if (str[i] == '0')
+		option.zero = 1;
+	if (str[i] == '.')
+		option.pre = va_arg(ap, int);
+	if (str[i] == '*')
+	{
+		option.width = va_arg(ap, int);
+		if (option.width < 0)
+		{
+			option.width *= -1;
+			option.align = 'l';
+		}
+	}
+	if (str[i] == '%')
+	{
+		ft_putchar_fd(str[i], 1);
+		printf_cnt++;
+	}
+	return (0);
+}
+
+void do_printf(char *str)
 {
 	int i;
 
 	i = 0;
-	while (args[i] != 0)
+	while (str[i] != 0)
 	{
-		if (args[i] == '%')
+		if (str[i] == '%')
 		{
-			if (ft_strchr(options, args[i + 1]))
-				set_option(ap, args, i + 1);
-			if (ft_strchr(types, args[i + 1]))
-				set_type(ap, args[i + 1]);
+			while (ft_strchr(options, str[i + 1]) || ft_strchr(types, str[i + 1]))
+			{
+				if (ft_strchr(options, str[i + 1]))
+					i += set_option(str, i + 1);
+				else
+					option.type = str[i + 1];
+				i++;
+			}
+			print_str(str);
 		}
 		else
 		{
 			printf_cnt++;
-			ft_putchar_fd(args[i], 1);
+			ft_putchar_fd(str[i], 1);
 		}
 		i++;
 	}
 }
 
-void set_option()
+void init_option()
 {
-	option.dir = 'r';
+	option.align = 'r';
+	option.zero = 0;
 	option.width = 0;
 	option.pre = 0;
 	option.base = 10;
-	option.type = '/0';
+	option.type = ' ';
 }
 
-int ft_printf(const char *args, ...)
+int ft_printf(const char *str, ...)
 {
-	va_list ap;
-	va_start(ap, args);
-	set_option();
-	do_printf(ap, (char *)args);
+	va_start(ap, str);
+	init_option();
+	do_printf((char *)str);
 	va_end(ap);
 	return (printf_cnt);
 }

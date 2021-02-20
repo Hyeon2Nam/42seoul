@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/20 11:45:37 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/02/20 13:56:25 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct	s_option
 {
-	char	dir;
+	char	align;
 	int		zero;
 	int		width;
 	int		pre;
@@ -27,9 +27,18 @@ typedef struct	s_option
 	char 	type;
 }				t_option;
 
+typedef struct s_
+{
+	/* data */
+};
+
+
+
 extern char *types = "diuxXcsp";
 extern char *options = "-0.*";
 extern int printf_cnt;
 extern t_option option;
+extern va_list ap;
+ 
 
 #endif

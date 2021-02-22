@@ -6,7 +6,7 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/20 13:56:25 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/02/22 21:12:05 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct	s_option
 {
-	char	align;
+	int		left_align;
 	int		zero;
 	int		width;
 	int		pre;
@@ -34,8 +34,8 @@ typedef struct s_
 
 
 
-extern char *types = "diuxXcsp";
-extern char *options = "-0.*";
+extern char types[] = "diuxXcsp";
+extern char options[] = "-0.*123456789";
 extern int printf_cnt;
 extern t_option option;
 extern va_list ap;

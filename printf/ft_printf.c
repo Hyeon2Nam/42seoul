@@ -6,7 +6,7 @@
 /*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/20 13:44:36 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/02/22 23:23:59 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,17 @@ void print_str(char *arags)
 		ft_putstr_fd(temp, 1);
 	}
 	if (option.type == 'd' || option.type == 'i')
-		put_arg_int();
-	if (option.type == 'u')
-		put_arg_uint();
-	if (option.type == 'x')
-		put_arg_hex();
-	if (option.type == 'X')
-		put_arg_hex();
+		put_int();
+	if (option.type == 'u' || option.type == 'x' || option.type == 'X')
+		put_unbr();
 	if (option.type == 'p')
-		put_arg_ptr();
+		put_ptr();
 }
 
-int set_option(char *str, int i)
+void set_option(char *str, int i)
 {
 	if (str[i] == '-')
-		option.align = 'l';
+		option.left_align = 1;
 	if (str[i] == '0')
 		option.zero = 1;
 	if (str[i] == '.')
@@ -53,15 +49,15 @@ int set_option(char *str, int i)
 		if (option.width < 0)
 		{
 			option.width *= -1;
-			option.align = 'l';
+			option.left_align = 1;
 		}
 	}
+	if (ft_isdigit(str[i]))
 	if (str[i] == '%')
 	{
 		ft_putchar_fd(str[i], 1);
 		printf_cnt++;
 	}
-	return (0);
 }
 
 void do_printf(char *str)
@@ -73,13 +69,12 @@ void do_printf(char *str)
 	{
 		if (str[i] == '%')
 		{
-			while (ft_strchr(options, str[i + 1]) || ft_strchr(types, str[i + 1]))
+			while (ft_strchr(options, str[++i]) || ft_strchr(types, str[i]))
 			{
-				if (ft_strchr(options, str[i + 1]))
-					i += set_option(str, i + 1);
+				if (ft_strchr(options, str[i]))
+					set_option(str, i);
 				else
-					option.type = str[i + 1];
-				i++;
+					option.type = str[i];
 			}
 			print_str(str);
 		}
@@ -94,7 +89,7 @@ void do_printf(char *str)
 
 void init_option()
 {
-	option.align = 'r';
+	option.left_align = 0;
 	option.zero = 0;
 	option.width = 0;
 	option.pre = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyenam <hyenam@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/22 23:23:59 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/02/23 16:43:10 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,53 @@
 
 void print_str(char *arags)
 {
-	char *temp;
-
 	if (option.type == 'c')
-	{
-		printf_cnt++;
-		ft_putchar_fd(va_arg(ap, int), 1);
-	}
+		put_char(va_arg(ap, int));
 	if (option.type == 's')
-	{
-		temp = va_arg(ap, char *);
-		printf_cnt += ft_strlen(temp);
-		ft_putstr_fd(temp, 1);
-	}
+		put_str(va_arg(ap, char *));
 	if (option.type == 'd' || option.type == 'i')
-		put_int();
+		put_int(va_arg(ap, int));
 	if (option.type == 'u' || option.type == 'x' || option.type == 'X')
-		put_unbr();
+		put_unbr(va_arg(ap, unsigned int));
 	if (option.type == 'p')
-		put_ptr();
+		put_ptr(va_arg(ap, unsigned long long));
+}
+
+void set_pre_width(char *str, int i)
+{
+	if (ft_isdigit(str[i]))
+	{
+		if (option.pre == -1)
+			option.width = option.width * 10 + str[i] - '0';
+		else
+			option.pre = option.pre * 10 + str[i] - '0';
+	}
+	else
+	{
+		if (option.pre == -1)
+		{
+			option.width = va_arg(ap, int);
+			if (option.width < 0)
+			{
+				option.left_align = 1;
+				option.width *= -1;
+			}
+		}
+		else
+			option.pre = va_arg(ap, int);
+	}
 }
 
 void set_option(char *str, int i)
 {
 	if (str[i] == '-')
 		option.left_align = 1;
-	if (str[i] == '0')
+	if (str[i] == '0' && option.pre == -1 && option.width == 0)
 		option.zero = 1;
 	if (str[i] == '.')
-		option.pre = va_arg(ap, int);
-	if (str[i] == '*')
-	{
-		option.width = va_arg(ap, int);
-		if (option.width < 0)
-		{
-			option.width *= -1;
-			option.left_align = 1;
-		}
-	}
-	if (ft_isdigit(str[i]))
+		option.pre = 0;
+	if (ft_isdigit(str[i]) || str[i] == '*')
+		set_pre_width(str, i);
 	if (str[i] == '%')
 	{
 		ft_putchar_fd(str[i], 1);
@@ -69,9 +77,9 @@ void do_printf(char *str)
 	{
 		if (str[i] == '%')
 		{
-			while (ft_strchr(options, str[++i]) || ft_strchr(types, str[i]))
+			while (ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i]))
 			{
-				if (ft_strchr(options, str[i]))
+				if (ft_strchr(OPTIONS, str[i]))
 					set_option(str, i);
 				else
 					option.type = str[i];
@@ -92,9 +100,9 @@ void init_option()
 	option.left_align = 0;
 	option.zero = 0;
 	option.width = 0;
-	option.pre = 0;
+	option.pre = -1;
 	option.base = 10;
-	option.type = ' ';
+	option.type = 0;
 }
 
 int ft_printf(const char *str, ...)

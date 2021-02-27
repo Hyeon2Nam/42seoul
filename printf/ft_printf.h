@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/23 16:37:02 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/02/27 23:32:48 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,10 @@ typedef struct	s_option
 }				t_option;
 
 
+void put_char(int c);
+void put_blank_zero(int width, int zero);
+
+void put_string(char *str);
+void put_blank_str(char *s);
 
 #endif

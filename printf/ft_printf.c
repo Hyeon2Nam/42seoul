@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/02/23 16:43:10 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/02 16:20:51 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void print_str(char *arags)
 	if (option.type == 'u' || option.type == 'x' || option.type == 'X')
 		put_unbr(va_arg(ap, unsigned int));
 	if (option.type == 'p')
-		put_ptr(va_arg(ap, unsigned long long));
+		put_ptr(va_arg(ap, unsigned long long)); // 왜 unsigned long long 일까?
 }
 
 void set_pre_width(char *str, int i)

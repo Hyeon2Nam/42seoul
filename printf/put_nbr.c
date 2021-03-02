@@ -6,53 +6,97 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/02 16:25:08 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/02 21:30:26 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_len(long long value)
+static int ft_len(unsigned long long value, int base)
 {
 	int res;
 
 	res = 0;
-	if (value < 0)
+	if (value == 0)
+		return (1);
+	while (value)
 	{
-		value *= -1;
-		res++;
-	}
-	while (value > 0)
-	{
-		value /= 10;
+		value /= base;
 		res++;
 	}
 	return (res);
 }
 
-void put_arg_int()
+unsigned long long ft_change_unsigned_base(unsigned long long n, int cl)
 {
-	int value;
-	int len;
+	int r;
 
-	value = va_arg(ap, int);
-	len = ft_len(value);
+	r = n % option.base;
+	n /= option.base;
+	if (n > 0)
+		ft_change_unsigned_base(n, cl);
+	if (r < 10)
+		ft_putnbr_fd(r, 1);
+	else
+		ft_putchar_fd(r - 10 + (cl == 1 ? 'A' : 'a'), 1);
 }
 
-void put_arg_uint()
+void put_width_neg_num(unsigned long long n, int len)
 {
+	if (option.width <= option.pre)
+	{
+		option.width = option.pre - len - 1;
+		ft_putchar_fd('-', 1);
+		printf_cnt++;
+		put_blank_zero(option.width, 1);
+	}
+	if (option.width > 0 && option.width > option.pre)
+	{
+		option.width = option.width - option.pre - 1;
+		put_blank_zero(option.width, 0);
+		ft_putchar_fd('-', 1);
+		printf_cnt++;
+		option.width = option.pre - len;
+		put_blank_zero(option.width, 1);
+	}
 }
 
-void put_arg_hex()
+void put_width(unsigned long long n, int len)
 {
-}
-
-void put_arg_ptr()
-{
+	if (option.width <= option.pre)
+	{
+		option.width = option.pre - len;
+		put_blank_zero(option.width, 1);
+	}
+	if (option.width > 0 && option.width > option.pre)
+	{
+		option.width = option.width - option.pre - 1;
+		put_blank_zero(option.width, 0);
+		option.width = option.pre - len;
+		put_blank_zero(option.width, 1);
+	}
 }
 
 void put_nbr(unsigned long long n)
 {
-	char *buf;
-	int buf_len;
+	int len;
+	int cl;
+
+	if (option.type == 'x' || option.type == 'X' || option.type == 'p')
+		option.base = 16;
+	if (n < 0)
+	{
+		option.neg_num = 1;
+		n *= -1;
+	}
+	if (option.type == 'X')
+		cl = 1;
+	else
+		cl = 0;
+	n = ft_change_unsigned_base(n, cl);
+	len = ft_len(n, option.base);
+	if (option.neg_num && option.minus != 1)
+		put_blank_neg_num(n, len);
+	else if (option.minus != 1)
+		set_width(n, len);
 }

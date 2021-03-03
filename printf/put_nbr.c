@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/02 21:30:26 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/03 21:19:08 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,18 @@ void put_nbr(unsigned long long n)
 		cl = 0;
 	n = ft_change_unsigned_base(n, cl);
 	len = ft_len(n, option.base);
-	if (option.neg_num && option.minus != 1)
-		put_blank_neg_num(n, len);
-	else if (option.minus != 1)
-		set_width(n, len);
+	if (option.minus)
+	{
+		if (option.neg_num)
+			put_blank_neg_num(n, len);
+		else
+			set_width(n, len);
+	}
+	else
+	{
+		if (option.neg_num)
+			put_blank_neg_num(n, len);
+		else
+			set_width(n, len);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/02 18:49:13 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/05 22:09:52 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "../libft/libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
 
 # define TYPES "diuxXcsp"

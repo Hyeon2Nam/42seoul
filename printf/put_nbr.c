@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/05 23:35:53 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/09 23:11:57 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void put_left_width(char *n, int len)
 	put_blank_zero(option.width - minus, 0);
 }
 
-void put_right_width(unsigned long long n, int len)
+void put_right_width(char *n, int len)
 {
 	if (option.neg_num)
 	{
@@ -100,10 +100,12 @@ void put_right_width(unsigned long long n, int len)
 	}
 	option.width = option.pre - len;
 	put_blank_zero(option.width, 1);
+	ft_putstr_fd(n, 1);
 }
 
 void set_width(char *n, int len)
 {
+	printf_cnt += len;
 	if (option.pre >= option.width)
 		put_pre(n, len);
 	else if (option.width != 0 && option.pre < option.width)
@@ -117,9 +119,13 @@ void set_width(char *n, int len)
 		ft_putstr_fd(n, 1);
 }
 
-void ft_pointer_address()
+void ft_pointer_address(char **num)
 {
-	//code ;
+	int len;
+
+	*num = ft_strjoin("0x", *num);
+	len = ft_strlen(*num);
+	set_width(*num, len);
 }
 
 void put_nbr(unsigned long long n)
@@ -141,10 +147,10 @@ void put_nbr(unsigned long long n)
 		cl = 0;
 	ft_change_base(n, cl, &num);
 	if (option.type == 'p')
-		ft_pointer_address();
+		ft_pointer_address(&num);
 	else
 	{
-		len = ft_len(n, option.base);
+		len = ft_strlen(num);
 		set_width(num, len);
 	}
 }

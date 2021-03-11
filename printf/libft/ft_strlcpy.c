@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:41:42 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 22:49:35 by hyenam           ###   ########.fr       */
+/*   Created: 2020/12/23 14:18:31 by riiringim         #+#    #+#             */
+/*   Updated: 2021/03/09 23:20:42 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+#include <stdio.h>
 
-int ft_printf(const char *args, ...);
-
-int main()
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-    printf("%d\n", 123);
-    ft_printf("%d", 123);
+	size_t i;
+
+	i = 0;
+	if (!dst || !src)
+		return (0);
+	if (dstsize > 0)
+	{
+		while (--dstsize && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = 0;
+	}
+	return (ft_strlen(src));
 }

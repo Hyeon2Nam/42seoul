@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:41:42 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 22:49:35 by hyenam           ###   ########.fr       */
+/*   Created: 2020/12/28 16:50:49 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/29 20:33:50 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_printf(const char *args, ...);
-
-int main()
+t_list	*ft_lstnew(void *content)
 {
-    printf("%d\n", 123);
-    ft_printf("%d", 123);
+	t_list *lst;
+
+	lst = (t_list *)malloc(sizeof(t_list));
+	if (!lst)
+		return (NULL);
+	if (!content)
+		lst->content = NULL;
+	else
+		lst->content = content;
+	lst->next = NULL;
+	return (lst);
 }

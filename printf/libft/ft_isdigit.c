@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:41:42 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 22:49:35 by hyenam           ###   ########.fr       */
+/*   Created: 2020/12/25 13:47:45 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/25 13:49:59 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_printf(const char *args, ...);
-
-int main()
+int	ft_isdigit(int c)
 {
-    printf("%d\n", 123);
-    ft_printf("%d", 123);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

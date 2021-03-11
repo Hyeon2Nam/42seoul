@@ -6,14 +6,14 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/05 22:09:52 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/09 23:14:22 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "../libft/libft.h"
+#include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -21,13 +21,9 @@
 # define TYPES "diuxXcsp"
 # define OPTIONS "-0.*123456789"
 
-extern int printf_cnt;
-extern t_option option;
-extern va_list ap; 
-
 typedef struct	s_option
 {
-	int		left_align;
+	int		minus;
 	int		zero;
 	int		width;
 	int		pre;
@@ -36,15 +32,30 @@ typedef struct	s_option
 	int		neg_num;
 }				t_option;
 
+extern int printf_cnt;
+extern t_option option;
+extern va_list ap; 
+
 int ft_printf(const char *str, ...);
-void print_str(char *arags);
-void set_pre_width(char *str, int i);
-void set_option(char *str, int i);
-void do_printf(char *str);
 void init_option();
+void do_printf(char *str);
+void set_option(char *str, int i);
+void set_pre_width(char *str, int i);
+void print_str();
+
 void put_char(int c);
 void put_blank_zero(int width, int zero);
-void put_string(char *str);
+
+void put_str(char *str);
 void put_blank_str(char *s);
+
+void put_nbr(unsigned long long n);
+void ft_pointer_address(char **num);
+void set_width(char *n, int len);
+void put_right_width(char *n, int len);
+void put_left_width(char *n, int len);
+void put_pre(char *n, int len);
+void ft_change_base(unsigned long long n, int cl, char **num);
+
 
 #endif

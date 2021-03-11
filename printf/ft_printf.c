@@ -6,13 +6,13 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/02 18:50:48 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/09 23:14:50 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_str(char *arags)
+void print_str()
 {
 	if (option.type == 'c')
 		put_char(va_arg(ap, int));
@@ -23,7 +23,7 @@ void print_str(char *arags)
 	if (option.type == 'u' || option.type == 'x' || option.type == 'X')
 		put_nbr(va_arg(ap, unsigned int));
 	if (option.type == 'p')
-		put_nbr(va_arg(ap, unsigned long long)); // 왜 unsigned long long 일까?
+		put_nbr(va_arg(ap, unsigned long long));
 }
 
 void set_pre_width(char *str, int i)
@@ -42,7 +42,7 @@ void set_pre_width(char *str, int i)
 			option.width = va_arg(ap, int);
 			if (option.width < 0)
 			{
-				option.left_align = 1;
+				option.minus = 1;
 				option.width *= -1;
 			}
 		}
@@ -54,7 +54,7 @@ void set_pre_width(char *str, int i)
 void set_option(char *str, int i)
 {
 	if (str[i] == '-')
-		option.left_align = 1;
+		option.minus = 1;
 	if (str[i] == '0' && option.pre == -1 && option.width == 0)
 		option.zero = 1;
 	if (str[i] == '.')
@@ -84,7 +84,7 @@ void do_printf(char *str)
 				else
 					option.type = str[i];
 			}
-			print_str(str);
+			print_str();
 		}
 		else
 		{
@@ -97,7 +97,7 @@ void do_printf(char *str)
 
 void init_option()
 {
-	option.left_align = 0;
+	option.minus = 0;
 	option.zero = 0;
 	option.width = 0;
 	option.pre = -1;

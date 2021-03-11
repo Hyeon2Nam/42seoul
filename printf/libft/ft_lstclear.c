@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:41:42 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 22:49:35 by hyenam           ###   ########.fr       */
+/*   Created: 2020/12/29 18:17:50 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/29 20:33:40 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_printf(const char *args, ...);
-
-int main()
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-    printf("%d\n", 123);
-    ft_printf("%d", 123);
+	t_list *temp;
+
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
+	}
+	*lst = NULL;
 }

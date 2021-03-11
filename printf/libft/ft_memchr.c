@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:41:42 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 22:49:35 by hyenam           ###   ########.fr       */
+/*   Created: 2020/12/22 21:51:19 by riiringim         #+#    #+#             */
+/*   Updated: 2020/12/29 20:33:55 by riiringim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_printf(const char *args, ...);
-
-int main()
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-    printf("%d\n", 123);
-    ft_printf("%d", 123);
+	const char *temp;
+
+	temp = s;
+	while (n--)
+		if (*temp++ == c)
+			return ((void *)--temp);
+	return (NULL);
 }

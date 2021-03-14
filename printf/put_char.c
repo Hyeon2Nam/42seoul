@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:39:11 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/14 09:32:48 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 14:11:58 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,17 @@ void put_blank_zero(int width, int zero)
 	while (++i < width)
 	{
 		if (zero == 1)
-			ft_putchar_fd('0');
+			printf_cnt += ft_putchar_fd('0');
 		else
-			ft_putchar_fd(' ');
-		printf_cnt++;
+			printf_cnt += ft_putchar_fd(' ');
 	}
 }
 
 void put_char(int c)
 {
 	if (option.minus == 1)
-	{
-		ft_putchar_fd(c);
-		printf_cnt++;
-	}
+		printf_cnt += ft_putchar_fd(c);
 	put_blank_zero(option.width, option.zero);
 	if (option.minus == 0)
-	{
-		ft_putchar_fd(c);
-		printf_cnt++;
-	}
+		printf_cnt += ft_putchar_fd(c);
 }

@@ -6,16 +6,23 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:21:45 by riiringim         #+#    #+#             */
-/*   Updated: 2021/03/14 09:31:10 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 14:16:14 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s)
+int ft_putstr_fd(char *s)
 {
+	int i;
+
+	i = 0;
 	if (!s)
-		return ;
+		return;
 	while (*s)
+	{
 		ft_putchar_fd(*s++);
+		i++;
+	}
+	return (i);
 }

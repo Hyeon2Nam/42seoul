@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/14 10:04:31 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 14:46:36 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void print_str()
 {
-	printf("타입 : %c\n", option.type);
 	if (option.type == 'c')
 		put_char(va_arg(ap, int));
 	else if (option.type == 's')
@@ -63,22 +62,19 @@ void set_option(char *str, int i)
 	if (ft_isdigit(str[i]) || str[i] == '*')
 		set_pre_width(str, i);
 	if (str[i] == '%')
-	{
-		ft_putchar_fd(str[i]);
-		printf_cnt++;
-	}
+		printf_cnt += ft_putchar_fd(str[i]);
 }
 
 void do_printf(char *str)
 {
 	int i;
 
-	i = 0;
-	while (str[i] != 0)
+	i = -1;
+	while (str[++i])
 	{
 		if (str[i] == '%')
 		{
-			while (ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i]))
+			while ((ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i])) && str[i])
 			{
 				if (ft_strchr(OPTIONS, str[i]))
 					set_option(str, i);
@@ -86,15 +82,11 @@ void do_printf(char *str)
 					option.type = str[i];
 			}
 			print_str();
-			
 		}
 		else
-		{
-			printf_cnt++;
-			ft_putchar_fd(str[i]);
-		}
-		i++;
+			printf_cnt += (ft_putchar_fd(str[i]) * -1);
 	}
+	printf("cnt : %d", printf_cnt);
 }
 
 void init_option()
@@ -110,6 +102,7 @@ void init_option()
 
 int ft_printf(const char *str, ...)
 {
+	printf_cnt = 0;
 	va_start(ap, str);
 	init_option();
 	do_printf((char *)str);

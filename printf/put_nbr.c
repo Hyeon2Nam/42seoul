@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/14 09:33:11 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 14:17:27 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void put_pre(char *n, int len)
 	}
 	option.width = option.pre - len;
 	put_blank_zero(option.width - minus, 1);
-	ft_putstr_fd(n);
+	printf_cnt += ft_putstr_fd(n);
 }
 
 void put_left_width(char *n, int len)
@@ -80,7 +80,7 @@ void put_left_width(char *n, int len)
 	}
 	width = option.pre - len;
 	put_blank_zero(width, 1);
-	ft_putstr_fd(n);
+	printf_cnt += ft_putstr_fd(n);
 	put_blank_zero(option.width - minus, 0);
 }
 
@@ -100,7 +100,7 @@ void put_right_width(char *n, int len)
 	}
 	option.width = option.pre - len;
 	put_blank_zero(option.width, 1);
-	ft_putstr_fd(n);
+	printf_cnt += ft_putstr_fd(n);
 }
 
 void set_width(char *n, int len)
@@ -116,7 +116,7 @@ void set_width(char *n, int len)
 			put_right_width(n, len);
 	}
 	else
-		ft_putstr_fd(n);
+		printf_cnt += ft_putstr_fd(n);
 }
 
 void ft_pointer_address(char **num)

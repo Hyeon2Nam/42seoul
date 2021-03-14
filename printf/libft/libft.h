@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:56:56 by riiringim         #+#    #+#             */
-/*   Updated: 2021/03/14 09:31:42 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 14:16:08 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void			ft_putchar_fd(char c);
-void			ft_putstr_fd(char *s);
+int				ft_putchar_fd(char c);
+int				ft_putstr_fd(char *s);
 void			ft_putendl_fd(char *s);
 void			ft_putnbr_fd(int n);
 

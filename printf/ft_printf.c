@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/14 14:46:36 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 14:54:23 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,20 @@ void do_printf(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == '%')
-		{
-			while ((ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i])) && str[i])
-			{
-				if (ft_strchr(OPTIONS, str[i]))
-					set_option(str, i);
-				else
-					option.type = str[i];
-			}
-			print_str();
-		}
-		else
-			printf_cnt += (ft_putchar_fd(str[i]) * -1);
+		printf("str[%d] : %c\n", i, str[i]);
+		// if (str[i] == '%')
+		// {
+		// 	while ((ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i])) && str[i])
+		// 	{
+		// 		if (ft_strchr(OPTIONS, str[i]))
+		// 			set_option(str, i);
+		// 		else
+		// 			option.type = str[i];
+		// 	}
+		// 	print_str();
+		// }
+		// else
+		ft_putchar_fd(str[i]);
 	}
 	printf("cnt : %d", printf_cnt);
 }

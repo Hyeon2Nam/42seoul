@@ -3,38 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riiringim <riiringim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:29:16 by riiringim         #+#    #+#             */
-/*   Updated: 2020/12/29 20:34:12 by riiringim        ###   ########.fr       */
+/*   Updated: 2021/03/14 09:31:02 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putnbr_fd(int nbr, int fd)
+void		ft_putnbr_fd(int nbr)
 {
 	long	n;
 
 	n = nbr;
 	if (n == -2147483648)
 	{
-		ft_putstr_fd("-2147483648", fd);
+		ft_putstr_fd("-2147483648");
 		return ;
 	}
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-n, fd);
+		ft_putchar_fd('-');
+		ft_putnbr_fd(-n);
 	}
 	else
 	{
 		if (n > 9)
 		{
-			ft_putnbr_fd(n / 10, fd);
-			ft_putnbr_fd(n % 10, fd);
+			ft_putnbr_fd(n / 10);
+			ft_putnbr_fd(n % 10);
 		}
 		else
-			ft_putchar_fd(n + '0', fd);
+			ft_putchar_fd(n + '0');
 	}
 }

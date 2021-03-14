@@ -6,13 +6,13 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 14:07:34 by riiringim         #+#    #+#             */
-/*   Updated: 2021/03/09 22:42:40 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/11 23:32:57 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen(const char *s)
 {
 	int i;
 

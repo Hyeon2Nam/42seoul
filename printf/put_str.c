@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 19:02:58 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 23:20:14 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 09:33:19 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void put_str(char *str)
 {
 	char *s;
 
-	if (!str)
+	if (str == NULL)
 		str = "(null)";
 	if (option.pre == -1 || option.pre >= (int)ft_strlen(str))
 		option.pre = ft_strlen(str);
@@ -39,13 +39,13 @@ void put_str(char *str)
 	ft_strlcpy(s, str, option.pre);
 	if (option.minus == 1)
 	{
-		ft_putstr_fd(s, 1);
+		ft_putstr_fd(s);
 		put_blank_str(s);
 	}
 	else
 	{
 		put_blank_str(s);
-		ft_putstr_fd(s, 1);
+		ft_putstr_fd(s);
 	}
 	free(s);
 	s = NULL;

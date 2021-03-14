@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 23:14:50 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 10:04:31 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 void print_str()
 {
+	printf("타입 : %c\n", option.type);
 	if (option.type == 'c')
 		put_char(va_arg(ap, int));
-	if (option.type == 's')
+	else if (option.type == 's')
 		put_str(va_arg(ap, char *));
-	if (option.type == 'd' || option.type == 'i')
+	else if (option.type == 'd' || option.type == 'i')
 		put_nbr(va_arg(ap, int));
-	if (option.type == 'u' || option.type == 'x' || option.type == 'X')
+	else if (option.type == 'u' || option.type == 'x' || option.type == 'X')
 		put_nbr(va_arg(ap, unsigned int));
-	if (option.type == 'p')
+	else if (option.type == 'p')
 		put_nbr(va_arg(ap, unsigned long long));
 }
 
@@ -63,7 +64,7 @@ void set_option(char *str, int i)
 		set_pre_width(str, i);
 	if (str[i] == '%')
 	{
-		ft_putchar_fd(str[i], 1);
+		ft_putchar_fd(str[i]);
 		printf_cnt++;
 	}
 }
@@ -85,11 +86,12 @@ void do_printf(char *str)
 					option.type = str[i];
 			}
 			print_str();
+			
 		}
 		else
 		{
 			printf_cnt++;
-			ft_putchar_fd(str[i], 1);
+			ft_putchar_fd(str[i]);
 		}
 		i++;
 	}

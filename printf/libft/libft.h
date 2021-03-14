@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 12:56:56 by riiringim         #+#    #+#             */
-/*   Updated: 2021/03/09 23:20:47 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 09:31:42 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
-size_t			ft_strlen(char *s);
+size_t			ft_strlen(const char *s);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strchr(const char *s, int c);
@@ -46,10 +46,10 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char *s, int fd);
-void			ft_putendl_fd(char *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void			ft_putchar_fd(char c);
+void			ft_putstr_fd(char *s);
+void			ft_putendl_fd(char *s);
+void			ft_putnbr_fd(int n);
 
 typedef struct	s_list
 {

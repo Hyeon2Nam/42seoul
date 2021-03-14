@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 17:41:42 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 22:49:35 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 10:03:39 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int ft_printf(const char *args, ...);
 
 int main()
 {
-    printf("%d\n", 123);
-    ft_printf("%d", 123);
+    char a = 'a';
+    printf("%c\n", a);
+    ft_printf("%c", a);
 }

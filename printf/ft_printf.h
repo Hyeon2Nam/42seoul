@@ -6,35 +6,35 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/09 23:14:22 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/12 01:40:20 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#define FT_PRINTF_H
 
 #include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
-# define TYPES "diuxXcsp"
-# define OPTIONS "-0.*123456789"
+#define TYPES "diuxXcsp"
+#define OPTIONS "-0.*123456789"
 
-typedef struct	s_option
+typedef struct s_option
 {
-	int		minus;
-	int		zero;
-	int		width;
-	int		pre;
-	int		base;
-	char 	type;
-	int		neg_num;
-}				t_option;
+	int minus;
+	int zero;
+	int width;
+	int pre;
+	int base;
+	char type;
+	int neg_num;
+} t_option;
 
-extern int printf_cnt;
-extern t_option option;
-extern va_list ap; 
+int printf_cnt;
+t_option option;
+va_list ap;
 
 int ft_printf(const char *str, ...);
 void init_option();
@@ -56,6 +56,5 @@ void put_right_width(char *n, int len);
 void put_left_width(char *n, int len);
 void put_pre(char *n, int len);
 void ft_change_base(unsigned long long n, int cl, char **num);
-
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:43:38 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/14 14:54:23 by hyenam           ###   ########.fr       */
+/*   Created: 2021/03/14 21:49:41 by hyenam            #+#    #+#             */
+/*   Updated: 2021/03/14 21:49:43 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void print_str()
 {
+	printf("\n1. type : %c\n", option.type);
 	if (option.type == 'c')
 		put_char(va_arg(ap, int));
 	else if (option.type == 's')
@@ -24,6 +25,7 @@ void print_str()
 		put_nbr(va_arg(ap, unsigned int));
 	else if (option.type == 'p')
 		put_nbr(va_arg(ap, unsigned long long));
+	printf("\n4. type : %c\n", option.type);
 }
 
 void set_pre_width(char *str, int i)
@@ -72,22 +74,21 @@ void do_printf(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		printf("str[%d] : %c\n", i, str[i]);
-		// if (str[i] == '%')
-		// {
-		// 	while ((ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i])) && str[i])
-		// 	{
-		// 		if (ft_strchr(OPTIONS, str[i]))
-		// 			set_option(str, i);
-		// 		else
-		// 			option.type = str[i];
-		// 	}
-		// 	print_str();
-		// }
-		// else
-		ft_putchar_fd(str[i]);
+		if (str[i] == '%')
+		{
+			while ((ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i])) && str[i])
+			{
+				if (ft_strchr(OPTIONS, str[i]))
+					set_option(str, i);
+				else
+					option.type = str[i];
+			}
+			print_str();
+		}
+		else
+			printf_cnt += ft_putchar_fd(str[i]);
 	}
-	printf("cnt : %d", printf_cnt);
+	printf("\ncnt : %d", printf_cnt);
 }
 
 void init_option()

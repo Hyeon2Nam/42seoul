@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/14 14:17:27 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 21:36:10 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void ft_pointer_address(char **num)
 {
 	int len;
 
+	printf("\n3. type : %c\n", option.type);
 	*num = ft_strjoin("0x", *num);
 	len = ft_strlen(*num);
 	set_width(*num, len);
@@ -130,6 +131,7 @@ void ft_pointer_address(char **num)
 
 void put_nbr(unsigned long long n)
 {
+	printf("\n2. type : %c\n", option.type);
 	int len;
 	int cl;
 	char *num;

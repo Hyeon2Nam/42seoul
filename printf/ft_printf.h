@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/12 01:40:20 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 21:49:05 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 #define TYPES "diuxXcsp"
 #define OPTIONS "-0.*123456789"

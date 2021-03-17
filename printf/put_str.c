@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 19:02:58 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/14 09:33:19 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/14 22:14:38 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void put_str(char *str)
 	if (option.pre == -1 || option.pre >= (int)ft_strlen(str))
 		option.pre = ft_strlen(str);
 	s = (char *)malloc(sizeof(char) * (option.pre + 1));
-	ft_strlcpy(s, str, option.pre);
+	ft_strlcpy(s, str, option.pre + 1);
 	if (option.minus == 1)
 	{
 		ft_putstr_fd(s);

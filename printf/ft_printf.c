@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 21:49:41 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/17 20:59:15 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/18 20:47:34 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void do_printf(char *str)
         else
             printf_cnt += ft_putchar_fd(str[i]);
     }
-    // printf("\ncnt : %d", printf_cnt);
+    printf("\n*****|end cnt : %d|*****", printf_cnt);
 }
 
 void init_option()

@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 17:49:10 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/20 01:50:25 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/20 03:07:03 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void set_width(char *n, int len);
 void put_right_width(char *n, int len);
 void put_left_width(char *n, int len);
 void put_pre(char *n, int len);
-void ft_change_base(unsigned long long n, int cl, char **num);
+void ft_change_base(unsigned long long n, char c, char **num);
 
 #endif

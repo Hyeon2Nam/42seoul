@@ -6,37 +6,56 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/20 02:06:23 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/21 21:24:09 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_len(unsigned long long value, int base)
+static int ft_len(unsigned long long value)
 {
 	int res;
 
 	res = 0;
-	if (value == 0 && option.pre != 0)
+	if (value == 0)
 		return (1);
 	while (value)
 	{
-		value /= base;
+		value /= option.base;
 		res++;
 	}
 	return (res);
 }
 
-void ft_change_base(unsigned long long n, int cl, char **num)
+char *ft_zero()
+{
+	char *num;
+	int i;
+
+	if (option.pre == -1)
+		option.pre = 1;
+	num = (char *)malloc(sizeof(char) * (option.pre + 1));
+	num[option.pre] = 0;
+	i = 0;
+	while (i < option.pre)
+		num[i++] = '0';
+	return (num);
+}
+
+void ft_change_base(unsigned long long n, char c, char **num)
 {
 	int r;
 	int len;
 	int i;
 
-	i = 1;
-	len = ft_len(n, option.base);
+	len = ft_len(n);
 	*num = (char *)malloc(sizeof(char) * (len + 1));
+	if (!num)
+		return;
+	i = 1;
 	(*num)[len] = 0;
+	if (n == 0)
+		*num = ft_zero();
 	while (n > 0)
 	{
 		r = n % option.base;
@@ -44,25 +63,22 @@ void ft_change_base(unsigned long long n, int cl, char **num)
 		if (r < 10)
 			(*num)[len - i] = r + '0';
 		else
-			(*num)[len - i] = r - 10 + (cl == 1 ? 'A' : 'a');
+			(*num)[len - i] = r - 10 + c;
 		i++;
 	}
 }
 
 void put_pre(char *n, int len)
 {
-	int minus;
 	int width;
 
-	minus = 0;
 	if (option.neg_num)
 	{
 		ft_putchar_fd('-');
 		printf_cnt++;
-		minus = 1;
 	}
 	width = option.pre - len + 1;
-	put_blank_zero(width - minus, 1);
+	put_blank_zero(width, 1);
 	printf_cnt += ft_putstr_fd(n);
 }
 
@@ -85,18 +101,15 @@ void put_left_width(char *n, int len)
 
 void put_right_width(char *n, int len)
 {
+	option.width -= len;
 	if (option.neg_num)
 	{
-		option.width -= len + 1;
 		put_blank_zero(option.width, option.zero);
 		ft_putchar_fd('-');
 		printf_cnt++;
 	}
 	else
-	{
-		option.width -= len;
 		put_blank_zero(option.width + 1, option.zero);
-	}
 	printf_cnt += ft_putstr_fd(n);
 }
 
@@ -104,9 +117,7 @@ void set_width(char *n, int len)
 {
 	if (option.zero && option.width > option.pre)
 		option.zero = 0;
-	if (option.pre >= option.width)
-		put_pre(n, len);
-	else if (option.width != 0 && option.pre < option.width)
+	if (option.width != 0 && option.pre < option.width)
 	{
 		if (option.minus)
 			put_left_width(n, len);
@@ -114,14 +125,13 @@ void set_width(char *n, int len)
 			put_right_width(n, len);
 	}
 	else
-		printf_cnt += ft_putstr_fd(n);
+		put_right_width(n, len);
 }
 
 void ft_pointer_address(char **num)
 {
 	int len;
 
-	printf("%s", *num);
 	*num = ft_strjoin("0x", *num);
 	len = ft_strlen(*num);
 	set_width(*num, len);
@@ -141,9 +151,9 @@ void put_nbr(unsigned long long n)
 		n *= -1;
 	}
 	if (option.type == 'X')
-		cl = 1;
+		cl = 'A';
 	else
-		cl = 0;
+		cl = 'a';
 	ft_change_base(n, cl, &num);
 	if (option.type == 'p')
 		ft_pointer_address(&num);
@@ -152,4 +162,5 @@ void put_nbr(unsigned long long n)
 		len = ft_strlen(num);
 		set_width(num, len);
 	}
+	free(num);
 }

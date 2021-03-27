@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/27 18:31:43 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/27 19:36:57 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,19 @@ void put_left_width(char *n, int len)
 
 void put_right_width(char *n, int len)
 {
+	if (option.pre > (int)ft_strlen(n))
+	{
+		option.width = option.pre;
+		option.zero = 1;
+	}
 	option.width -= len;
 	if (option.neg_num)
 	{
-		put_blank_zero(option.width, option.zero);
+		if(option.zero == 0)
+		put_blank_zero(option.width, 0);
 		ft_putchar_fd('-');
+		if (option.zero)
+		put_blank_zero(option.width + 1, 1);
 		printf_cnt++;
 	}
 	else

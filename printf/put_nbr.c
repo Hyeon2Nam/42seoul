@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/21 21:24:09 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/27 18:31:43 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char *ft_zero()
 	char *num;
 	int i;
 
-	if (option.pre == -1)
+	if (option.pre < 0)
 		option.pre = 1;
 	num = (char *)malloc(sizeof(char) * (option.pre + 1));
 	num[option.pre] = 0;

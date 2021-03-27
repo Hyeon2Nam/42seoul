@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 21:49:41 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/21 21:24:27 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/03/26 01:03:05 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void do_printf(char *str)
     i = -1;
     while (str[++i])
     {
+        init_option();
         if (str[i] == '%')
         {
             while (ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i]))

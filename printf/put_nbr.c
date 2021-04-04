@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/04/04 16:42:34 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/04 18:22:17 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void ft_change_base(unsigned long long n, char c, char **num)
 	(*num)[len] = 0;
 	if (n == 0)
 		*num = ft_zero();
-	// (*num)[0] = '0';
-
 	while (n > 0)
 	{
 		r = n % option.base;
@@ -84,7 +82,6 @@ void put_left_width(char *n, int len)
 		printf_cnt++;
 		minus = 1;
 	}
-
 	width = option.width - len + 1;
 	printf_cnt += ft_putstr_fd(n);
 	put_blank_zero(width - minus, option.zero);
@@ -92,12 +89,6 @@ void put_left_width(char *n, int len)
 
 void put_right_width(char *n, int len)
 {
-	if (option.pre > len)
-	{
-		option.zero = 1;
-		option.width = option.pre;
-	}
-	// put_blank_width();
 	option.width -= len;
 	if (option.neg_num)
 	{
@@ -105,11 +96,7 @@ void put_right_width(char *n, int len)
 			put_blank_zero(option.width, 0);
 		ft_putchar_fd('-');
 		if (option.zero)
-		{
-			if (option.neg_num && option.width > option.pre)
-				option.width--;
-			put_blank_zero(option.width + 1, 1);
-		}
+			put_blank_zero(option.width, option.zero);
 		printf_cnt++;
 	}
 	else
@@ -121,13 +108,8 @@ void set_width(char *n, int len)
 {
 	if (option.pre >= 0)
 		option.zero = 0;
-	if (option.width != 0 && option.pre < option.width)
-	{
-		if (option.minus)
-			put_left_width(n, len);
-		else
-			put_right_width(n, len);
-	}
+	if (option.minus)
+		put_left_width(n, len);
 	else
 		put_right_width(n, len);
 }

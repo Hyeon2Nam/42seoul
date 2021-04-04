@@ -4,12 +4,10 @@
 
 int ft_printf(const char *str, ...);
 
-#define BPRINT(x, ...) PRINT("\"%s\" // 1st '*' = %d, 2nd '*' = %d\n", x, a, b)
-
 int main()
 {
-    int a = 19;
-    int b = 14;
+    int a = 12;
+    int b = 18;
     char c = 'a';
     int d = 2147483647;
     int e = -2147483648;
@@ -30,11 +28,7 @@ int main()
     char *t = "0x12345678";
     char *u = "-0";
 
-    ft_printf("%%");
-    // ft_printf("%*.*d\n", a, b, 1);
-    // ft_printf("%*.*d\n", b, a, 1);
-    // printf("1. %.s, %.s, %.s, %.s, %.s\n", n, o, p, q, r);
-    // ft_printf("2. %.s, %.s, %.s, %.s, %.s\n", n, o, p, q, r);
+    ft_printf("asdf %% adf");
 }
 
 //gcc main.c put_*c ft_printf.c -L../libft -lft

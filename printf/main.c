@@ -8,8 +8,8 @@ int ft_printf(const char *str, ...);
 
 int main()
 {
-    int a = 2;
-    int b = 0;
+    int a = 19;
+    int b = 14;
     char c = 'a';
     int d = 2147483647;
     int e = -2147483648;
@@ -30,9 +30,11 @@ int main()
     char *t = "0x12345678";
     char *u = "-0";
 
-    printf("1. %.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d\n", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
-    ft_printf("2. %.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
-
+    ft_printf("%%");
+    // ft_printf("%*.*d\n", a, b, 1);
+    // ft_printf("%*.*d\n", b, a, 1);
+    // printf("1. %.s, %.s, %.s, %.s, %.s\n", n, o, p, q, r);
+    // ft_printf("2. %.s, %.s, %.s, %.s, %.s\n", n, o, p, q, r);
 }
 
 //gcc main.c put_*c ft_printf.c -L../libft -lft

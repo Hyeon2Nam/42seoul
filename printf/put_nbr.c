@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/27 19:36:57 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/04 16:42:34 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char *ft_zero()
 	char *num;
 	int i;
 
+	if (option.zero && option.pre < 0 && option.width > 0)
+		option.pre = option.width;
 	if (option.pre < 0)
 		option.pre = 1;
 	num = (char *)malloc(sizeof(char) * (option.pre + 1));
@@ -56,6 +58,8 @@ void ft_change_base(unsigned long long n, char c, char **num)
 	(*num)[len] = 0;
 	if (n == 0)
 		*num = ft_zero();
+	// (*num)[0] = '0';
+
 	while (n > 0)
 	{
 		r = n % option.base;
@@ -66,20 +70,6 @@ void ft_change_base(unsigned long long n, char c, char **num)
 			(*num)[len - i] = r - 10 + c;
 		i++;
 	}
-}
-
-void put_pre(char *n, int len)
-{
-	int width;
-
-	if (option.neg_num)
-	{
-		ft_putchar_fd('-');
-		printf_cnt++;
-	}
-	width = option.pre - len + 1;
-	put_blank_zero(width, 1);
-	printf_cnt += ft_putstr_fd(n);
 }
 
 void put_left_width(char *n, int len)
@@ -94,6 +84,7 @@ void put_left_width(char *n, int len)
 		printf_cnt++;
 		minus = 1;
 	}
+
 	width = option.width - len + 1;
 	printf_cnt += ft_putstr_fd(n);
 	put_blank_zero(width - minus, option.zero);
@@ -101,19 +92,24 @@ void put_left_width(char *n, int len)
 
 void put_right_width(char *n, int len)
 {
-	if (option.pre > (int)ft_strlen(n))
+	if (option.pre > len)
 	{
-		option.width = option.pre;
 		option.zero = 1;
+		option.width = option.pre;
 	}
+	// put_blank_width();
 	option.width -= len;
 	if (option.neg_num)
 	{
-		if(option.zero == 0)
-		put_blank_zero(option.width, 0);
+		if (!option.zero)
+			put_blank_zero(option.width, 0);
 		ft_putchar_fd('-');
 		if (option.zero)
-		put_blank_zero(option.width + 1, 1);
+		{
+			if (option.neg_num && option.width > option.pre)
+				option.width--;
+			put_blank_zero(option.width + 1, 1);
+		}
 		printf_cnt++;
 	}
 	else
@@ -123,7 +119,7 @@ void put_right_width(char *n, int len)
 
 void set_width(char *n, int len)
 {
-	if (option.zero && option.width > option.pre)
+	if (option.pre >= 0)
 		option.zero = 0;
 	if (option.width != 0 && option.pre < option.width)
 	{
@@ -134,6 +130,30 @@ void set_width(char *n, int len)
 	}
 	else
 		put_right_width(n, len);
+}
+
+char *set_pre(char *n, int len)
+{
+	char *new_num;
+	int i;
+	int j;
+
+	if (option.pre > len)
+	{
+		new_num = (char *)malloc(sizeof(char) * (option.pre + 1));
+		if (!new_num)
+			return (NULL);
+		i = 0;
+		new_num[option.pre] = 0;
+		while (len + i < option.pre)
+			new_num[i++] = '0';
+		j = 0;
+		while (j < len)
+			new_num[i++] = n[j++];
+		return (new_num);
+	}
+	else
+		return (n);
 }
 
 void ft_pointer_address(char **num)
@@ -167,6 +187,7 @@ void put_nbr(unsigned long long n)
 		ft_pointer_address(&num);
 	else
 	{
+		num = set_pre(num, ft_strlen(num));
 		len = ft_strlen(num);
 		set_width(num, len);
 	}

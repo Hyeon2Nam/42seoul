@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 21:49:41 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/26 01:03:05 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/04 16:59:25 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void set_pre_width(char *str, int i)
             {
                 option.minus = 1;
                 option.width *= -1;
+                option.zero = 0;
             }
         }
         else
@@ -62,7 +63,7 @@ void set_option(char *str, int i)
     if (ft_isdigit(str[i]) || str[i] == '*')
         set_pre_width(str, i);
     if (str[i] == '%')
-        printf_cnt += ft_putchar_fd(str[i]);
+        printf_cnt += ft_putstr_fd("%%");
 }
 
 void do_printf(char *str)
@@ -90,7 +91,6 @@ void do_printf(char *str)
         else
             printf_cnt += ft_putchar_fd(str[i]);
     }
-    // printf("\n*****|end cnt : %d|*****", printf_cnt);
 }
 
 void init_option()

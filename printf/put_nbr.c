@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/04/04 18:22:17 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/04 19:06:38 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,11 +165,11 @@ void put_nbr(unsigned long long n)
 	else
 		cl = 'a';
 	ft_change_base(n, cl, &num);
+	num = set_pre(num, ft_strlen(num));
 	if (option.type == 'p')
 		ft_pointer_address(&num);
 	else
 	{
-		num = set_pre(num, ft_strlen(num));
 		len = ft_strlen(num);
 		set_width(num, len);
 	}

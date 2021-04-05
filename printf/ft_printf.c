@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 21:49:41 by hyenam            #+#    #+#             */
-/*   Updated: 2021/04/04 18:10:15 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/05 16:07:59 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void print_str()
         put_char(va_arg(ap, int));
     else if (option.type == 's')
         put_str(va_arg(ap, char *));
+    else if (option.type == '%')
+        put_str("%");
     else if (option.type == 'd' || option.type == 'i')
         put_nbr(va_arg(ap, int));
     else if (option.type == 'u' || option.type == 'x' || option.type == 'X')
@@ -76,9 +78,7 @@ void do_printf(char *str)
         init_option();
         if (str[i] == '%')
         {
-            if (str[i + 1] == '%')
-                printf_cnt += ft_putchar_fd('%');
-            while (ft_strchr(OPTIONS, str[++i]) || ft_strchr(TYPES, str[i]))
+            while (str[++i] && (ft_strchr(OPTIONS, str[i]) || ft_strchr(TYPES, str[i]) || str[i] == '%'))
             {
                 if (ft_strchr(OPTIONS, str[i]))
                     set_option(str, i);

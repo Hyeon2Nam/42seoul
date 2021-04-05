@@ -13,7 +13,7 @@ int main()
     int e = -2147483648;
     int f = 42;
     int g = 25;
-    int h = 4200;
+    int h = 1234;
     int i = 8;
     int j = -12;
     int k = 123456789;
@@ -28,7 +28,7 @@ int main()
     char *t = "0x12345678";
     char *u = "-0";
 
-    ft_printf("asdf %% adf");
+    ft_printf("%-5");
 }
 
 //gcc main.c put_*c ft_printf.c -L../libft -lft

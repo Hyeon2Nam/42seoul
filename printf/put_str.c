@@ -6,47 +6,53 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 19:02:58 by hyenam            #+#    #+#             */
-/*   Updated: 2021/04/04 16:58:28 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/05 18:38:37 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void put_blank_str(char *s)
+int put_blank_str(char *s, t_option *option)
 {
 	int len;
 	int width;
+	int result;
 
+	result = 0;
 	len = (int)ft_strlen(s);
-	if (option.width < len)
+	if (option->width < len)
 	{
-		option.width = len;
-		return;
+		option->width = len;
+		return (0);
 	}
-	width = option.width - len + 1;
-	put_blank_zero(width, option.zero);
+	width = option->width - len + 1;
+	result += put_blank_zero(width, option->zero);
+	return (result);
 }
 
-void put_str(char *str)
+int put_str(char *str, t_option *option)
 {
 	char *s;
+	int result;
 
+	result = 0;
 	if (str == NULL)
 		str = "(null)";
-	if (option.pre != 0 && option.pre < 0)
-		option.pre = ft_strlen(str);
-	s = (char *)malloc(sizeof(char) * (option.pre + 1));
-	ft_strlcpy(s, str, option.pre + 1);
-	if (option.minus == 1)
+	if (option->pre != 0 && option->pre < 0)
+		option->pre = ft_strlen(str);
+	s = (char *)malloc(sizeof(char) * (option->pre + 1));
+	ft_strlcpy(s, str, option->pre + 1);
+	if (option->minus == 1)
 	{
-		printf_cnt += ft_putstr_fd(s);
-		put_blank_str(s);
+		result += ft_putstr_fd(s);
+		result += put_blank_str(s, option);
 	}
 	else
 	{
-		put_blank_str(s);
-		printf_cnt += ft_putstr_fd(s);
+		result += put_blank_str(s, option);
+		result += ft_putstr_fd(s);
 	}
 	free(s);
 	s = NULL;
+	return (result);
 }

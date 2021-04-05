@@ -6,31 +6,38 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:39:11 by hyenam            #+#    #+#             */
-/*   Updated: 2021/03/17 23:40:00 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/05 18:42:49 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void put_blank_zero(int width, int zero)
+int put_blank_zero(int width, int zero)
 {
 	int i;
+	int result;
 
 	i = 0;
+	result = 0;
 	while (++i < width)
 	{
 		if (zero == 1)
-			printf_cnt += ft_putchar_fd('0');
+			result += ft_putchar_fd('0');
 		else
-			printf_cnt += ft_putchar_fd(' ');
+			result += ft_putchar_fd(' ');
 	}
+	return (result);
 }
 
-void put_char(int c)
+int put_char(int c, t_option *option)
 {
-	if (option.minus == 1)
-		printf_cnt += ft_putchar_fd(c);
-	put_blank_zero(option.width, option.zero);
-	if (option.minus == 0)
-		printf_cnt += ft_putchar_fd(c);
+	int result;
+
+	result = 0;
+	if (option->minus == 1)
+		result += ft_putchar_fd(c);
+	result += put_blank_zero(option->width, option->zero);
+	if (option->minus == 0)
+		result += ft_putchar_fd(c);
+	return (result);
 }

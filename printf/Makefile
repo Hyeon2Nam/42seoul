@@ -6,7 +6,7 @@
 #    By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/22 19:37:13 by hyenam            #+#    #+#              #
-#    Updated: 2021/03/25 22:50:29 by hyenam           ###   ########.fr        #
+#    Updated: 2021/04/07 12:43:23 by hyenam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS = 	ft_printf.c \
 		put_char.c \
 		put_nbr.c \
 		put_str.c \
+		printf_util.c \
 
 OBJS = $(SRCS:.c=.o)
 

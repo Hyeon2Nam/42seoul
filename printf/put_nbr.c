@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/04/05 18:39:00 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/07 12:25:47 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void ft_change_base(unsigned long long n, char c, char **num, t_option *option)
 	}
 }
 
-int put_left_width(char *n, int len, t_option *option)
+void put_left_width(char *n, int len, t_option *option)
 {
 	int minus;
 	int width;
@@ -86,11 +86,12 @@ int put_left_width(char *n, int len, t_option *option)
 	}
 	width = option->width - len + 1;
 	result += ft_putstr_fd(n);
-	result += put_blank_zero(width - minus, option->zero);
+	put_blank_zero(width - minus, option->zero);
+	// result += put_blank_zero(width - minus, option->zero);
 	return (result);
 }
 
-int put_right_width(char *n, int len, t_option *option)
+void put_right_width(char *n, int len, t_option *option)
 {
 	int result;
 
@@ -99,19 +100,22 @@ int put_right_width(char *n, int len, t_option *option)
 	if (option->neg_num)
 	{
 		if (!option->zero)
-			result += put_blank_zero(option->width, 0);
+			put_blank_zero(option->width, 0);
+			// result += put_blank_zero(option->width, 0);
 		ft_putchar_fd('-');
 		if (option->zero)
-			result += put_blank_zero(option->width, option->zero);
+			put_blank_zero(option->width, option->zero);
+			// result += put_blank_zero(option->width, option->zero);
 		result++;
 	}
 	else
-		result += put_blank_zero(option->width + 1, option->zero);
+		put_blank_zero(option->width + 1, option->zero);
+		// result += put_blank_zero(option->width + 1, option->zero);
 	result += ft_putstr_fd(n);
 	return (result);
 }
 
-int set_width(char *n, int len, t_option *option)
+void set_width(char *n, int len, t_option *option)
 {
 	int result;
 
@@ -119,9 +123,11 @@ int set_width(char *n, int len, t_option *option)
 	if (option->pre >= 0)
 		option->zero = 0;
 	if (option->minus)
-		result += put_left_width(n, len, option);
+		put_left_width(n, len, option);
+		// result += put_left_width(n, len, option);
 	else
-		result += put_right_width(n, len, option);
+		put_right_width(n, len, option);
+		// result += put_right_width(n, len, option);
 	return (result);
 }
 
@@ -149,7 +155,7 @@ char *set_pre(char *n, int len, t_option *option)
 		return (n);
 }
 
-int ft_pointer_address(char **num, t_option *option)
+void ft_pointer_address(char **num, t_option *option)
 {
 	int len;
 	int result;
@@ -157,18 +163,19 @@ int ft_pointer_address(char **num, t_option *option)
 	result = 0;
 	*num = ft_strjoin("0x", *num);
 	len = ft_strlen(*num);
-	result += set_width(*num, len, option);
+	set_width(*num, len, option);
+	// result += set_width(*num, len, option);
 	return (result);
 }
 
-int put_nbr(unsigned long long n, t_option *option)
+void put_nbr(unsigned long long n, t_option *option)
 {
 	int len;
 	int cl;
 	char *num;
-	int result;
+	// int result;
 
-	result = 0;
+	// result = 0;
 	if (option->type == 'x' || option->type == 'X' || option->type == 'p')
 		option->base = 16;
 	if ((option->type == 'i' || option->type == 'd') && (int)n < 0)
@@ -183,12 +190,14 @@ int put_nbr(unsigned long long n, t_option *option)
 	ft_change_base(n, cl, &num, option);
 	num = set_pre(num, ft_strlen(num), option);
 	if (option->type == 'p')
-		result += ft_pointer_address(&num, option);
+		ft_pointer_address(&num, option);
+		// result += ft_pointer_address(&num, option);
 	else
 	{
 		len = ft_strlen(num);
-		result += set_width(num, len, option);
+		set_width(num, len, option);
+		// result += set_width(num, len, option);
 	}
 	free(num);
-	return (result);
+	// return (result);
 }

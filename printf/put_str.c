@@ -6,19 +6,19 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 19:02:58 by hyenam            #+#    #+#             */
-/*   Updated: 2021/04/05 18:38:37 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/07 12:24:07 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int put_blank_str(char *s, t_option *option)
+void put_blank_str(char *s, t_option *option)
 {
 	int len;
 	int width;
-	int result;
+	// int result;
 
-	result = 0;
+	// result = 0;
 	len = (int)ft_strlen(s);
 	if (option->width < len)
 	{
@@ -26,16 +26,17 @@ int put_blank_str(char *s, t_option *option)
 		return (0);
 	}
 	width = option->width - len + 1;
-	result += put_blank_zero(width, option->zero);
+	// result += put_blank_zero(width, option->zero);
+	put_blank_zero(width, option->zero);
 	return (result);
 }
 
-int put_str(char *str, t_option *option)
+void put_str(char *str, t_option *option)
 {
 	char *s;
-	int result;
+	// int result;
 
-	result = 0;
+	// result = 0;
 	if (str == NULL)
 		str = "(null)";
 	if (option->pre != 0 && option->pre < 0)
@@ -45,14 +46,16 @@ int put_str(char *str, t_option *option)
 	if (option->minus == 1)
 	{
 		result += ft_putstr_fd(s);
-		result += put_blank_str(s, option);
+		put_blank_str(s, option);
+		// result += put_blank_str(s, option);
 	}
 	else
 	{
-		result += put_blank_str(s, option);
+		put_blank_str(s, option);
+		// result += put_blank_str(s, option);
 		result += ft_putstr_fd(s);
 	}
 	free(s);
 	s = NULL;
-	return (result);
+	// return (result);
 }

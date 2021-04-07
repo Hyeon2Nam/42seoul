@@ -6,7 +6,7 @@
 /*   By: hyenam <hyeon@student.42seoul.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 13:46:09 by hyenam            #+#    #+#             */
-/*   Updated: 2021/04/07 16:45:25 by hyenam           ###   ########.fr       */
+/*   Updated: 2021/04/07 16:45:32 by hyenam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,3 @@ void	put_nbr(unsigned long long n)
 	free(num);
 	num = NULL;
 }
-//
